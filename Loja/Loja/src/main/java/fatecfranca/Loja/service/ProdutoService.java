@@ -38,4 +38,16 @@ public class ProdutoService {
         // percorre o vetor procurando por p que contém id igual ao informado no parâmetro
         return produtos.removeIf( p -> p.getId().equals(id));
     }
+    // atualiza produto no vetor
+    public Produto atualiza(Long id, Produto novo){
+        // percorre o vetor procurando
+        for(int i=0;i<produtos.size();i++){
+            if (produtos.get(i).getId().equals(id)){ // verifica se achou
+                novo.setId(id); // atualiza id
+                produtos.set(i, novo); // atualiza novo no vetor na posição i
+                return novo; // retorno produto atualizado
+            }
+        }
+        return null; // não encontrou
+    }
 }

@@ -48,4 +48,13 @@ public class ProdutoController {
         }
         return ResponseEntity.notFound().build(); // não removeu - statusCode 404
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Produto> atualizar(@PathVariable Long id,
+                                             @RequestBody Produto produto){
+        Produto atualizado = produtoService.atualiza(id, produto);
+        if (atualizado != null){
+            return ResponseEntity.ok(atualizado); // 200
+        }
+        return ResponseEntity.notFound().build(); // 404
+    }
 }

@@ -15,6 +15,7 @@ public class ProdutoService {
 
     // busca os produto no vetor
     public List<Produto> consulta(){
+
         return this.produtos;
     }
     // busca o produtod com id

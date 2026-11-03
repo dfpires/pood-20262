@@ -15,6 +15,7 @@ public class ProdutoController {
     ProdutoService produtoService;
 
     public ProdutoController(ProdutoService produtoService){
+        // injeção de dependência pelo construtor
         this.produtoService = produtoService;
     }
     @GetMapping
@@ -37,6 +38,7 @@ public class ProdutoController {
         Produto novo = produtoService.insere(produto); // chama service
         // URI - Uniform Resource Identifier
         URI uri = URI.create("/produtos/"+novo.getId()); // criando uma rota única
+        // statusCode = 201
         return ResponseEntity.created(uri).body(novo); // retorna produto criado
     }
 

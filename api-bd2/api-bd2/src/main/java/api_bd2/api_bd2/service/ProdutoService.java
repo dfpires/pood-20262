@@ -40,4 +40,16 @@ public class ProdutoService {
         }
         return false; // produto não existe
     }
+    // atualização
+    @Transactional
+    public Produto atualizar(Long id, Produto novo){
+        Optional<Produto> prod = buscar(id);
+        if (prod.isPresent()) {
+            novo.setId(id);
+            // novo tem id, então o save atualiza
+            produtoRepository.save(novo);
+            return novo;
+        }
+        return null;
+    }
 }
